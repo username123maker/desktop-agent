@@ -1,0 +1,18 @@
+[project]
+name = "desktop-agent"
+version = "0.1.0"
+description = "Agent S core logic refactored into three clean modules"
+dependencies = [
+    "pyautogui>=0.9.54",
+    "Pillow>=10.0",
+    "openai>=1.30",
+    "requests>=2.31",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+dev = ["black", "ruff", "pytest"]
+
+[build-system]
+requires = ["setuptools>=65"]
+build-backend = "setuptools.build_meta"
