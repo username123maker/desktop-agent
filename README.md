@@ -4,10 +4,6 @@
 
 ## 安装
 
-```bash
-pip install desktop-agent
-```
-
 > 开发模式（可修改源码）：
 ```bash
 git clone https://github.com/yourname/desktop-agent.git
@@ -95,6 +91,7 @@ python examples/demo.py
 ┌───────┴────────┐
 │    Executor    │ → pyautogui + 代码执行
 └────────────────┘
+```
 
 ---
 
