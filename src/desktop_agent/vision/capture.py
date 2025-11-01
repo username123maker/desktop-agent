@@ -4,17 +4,30 @@ from PIL import Image
 import pyautogui
 from typing import Tuple
 
-def capture_screen(
+def capture_screenshot(
     target_width: int = 1920,
     target_height: int = 1080,
 ) -> Tuple[bytes, Tuple[int, int]]:
     """
     捕获主屏幕并缩放到目标分辨率（供 Grounding 模型使用）
-    """
-    screen = pyautogui.screenshot()
-    if screen.size != (target_width, target_height):
-        screen = screen.resize((target_width, target_height), Image.LANCZOS)
     
-    buffer = io.BytesIO()
-    screen.save(buffer, format="PNG")
-    return buffer.getvalue(), (target_width, target_height)
+    Args:
+        target_width: 目标宽度
+        target_height: 目标高度
+    
+    Returns:
+        (截图字节流, (宽度, 高度))
+    
+    Raises:
+        Exception: 截图失败时抛出异常
+    """
+    try:
+        screen = pyautogui.screenshot()
+        if screen.size != (target_width, target_height):
+            screen = screen.resize((target_width, target_height), Image.LANCZOS)
+        
+        buffer = io.BytesIO()
+        screen.save(buffer, format="PNG")
+        return buffer.getvalue(), (target_width, target_height)
+    except Exception as e:
+        raise RuntimeError(f"截图失败: {e}") from e

@@ -12,6 +12,12 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["black", "ruff", "pytest"]
+anthropic = ["anthropic>=0.18"]
+gemini = ["google-generativeai>=0.3"]
+all = [
+    "anthropic>=0.18",
+    "google-generativeai>=0.3",
+]
 
 [build-system]
 requires = ["setuptools>=65"]
